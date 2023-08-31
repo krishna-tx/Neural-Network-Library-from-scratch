@@ -14,8 +14,8 @@ class MeanSquaredErrorLoss:
         return self
     
     def backward(self):
-        dL_da = 2 * (self.y_hat - self.y)
-        self.model.backward(dL_da)
+        da = 2 * (self.y_hat - self.y)
+        self.model.backward(da)
     
     def step(self):
         pass

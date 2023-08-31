@@ -3,7 +3,7 @@ import numpy as np
 class Linear:
     def __init__(self, in_features, out_features, bias=True):
         self.weights = np.random.randn(in_features, out_features)
-        self.biases = np.zeros((1, out_features)) # broadcasting will take care of dimensions
+        self.biases = np.zeros((1, out_features)) # broadcasting will take care of first dimension
         self.inputs = 0
         self.dw = 0
         self.db = 0
@@ -28,10 +28,16 @@ class Linear:
         da = np.dot(dz, dz_da)
         return da
     
-    def step(self, lr=1e-3, momentum=0.9):
-        # Calculate Step with Momentum 
-        self.v_dw = momentum * self.v_dw + (1 - momentum) * self.dw
-        self.v_db = momentum * self.v_db + (1 - momentum) * self.db
+    def step(self, lr=1e-3, momentum=0):
+        # Check if Momentum should be used
+        if momentum <= 0:
+            # Calculate Step without Momentum
+            self.v_dw = self.dw
+            self.v_db = self.db
+        else:
+            # Calculate Step with Momentum 
+            self.v_dw = momentum * self.v_dw + (1 - momentum) * self.dw
+            self.v_db = momentum * self.v_db + (1 - momentum) * self.db
         
         # Make Update
         self.weights -= lr * self.v_dw

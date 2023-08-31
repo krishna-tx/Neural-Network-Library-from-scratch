@@ -7,16 +7,18 @@ class CrossEntropyLoss:
         self.model = model
         self.loss = 0
         
-    def forward(self, y_hat, y):
-        self.y_hat = y_hat
+    def softmax(self, x):
+        return np.exp(x) / np.sum(np.exp(x), axis=1).reshape(-1, 1)
+        
+    def forward(self, x, y):
+        self.y_hat = self.softmax(x) # do a softmax to get predictions
         self.y = y
-        self.loss = np.mean(np.sum(-1 * y * np.log(y_hat + 1e-7), axis=1))
+        self.loss = np.mean(np.sum(-1 * y * np.log(self.y_hat + 1e-7), axis=1))
         return self
     
     def backward(self):
-        # combined gradient for both Cross Entropy and Softmax
-        dL_dz = self.y_hat - self.y
-        self.model.backward(dL_dz)
+        dz = self.y_hat - self.y # Combined partial derivative for both Cross Entropy and Softmax
+        self.model.backward(dz)
     
     def step(self):
         pass
