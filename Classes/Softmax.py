@@ -5,7 +5,8 @@ class Softmax:
         pass
     
     def softmax(self, x):
-        return np.exp(x) / np.sum(np.exp(x), axis=1).reshape(-1, 1)
+        exp = np.exp(x - np.max(x, axis=1).reshape(-1, 1)) # numerical stability
+        return exp / np.sum(exp, axis=1).reshape(-1, 1)
     
     def forward(self, x):
         return self.softmax(x)

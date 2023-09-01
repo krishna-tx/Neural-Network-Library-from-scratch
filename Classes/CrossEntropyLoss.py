@@ -8,7 +8,8 @@ class CrossEntropyLoss:
         self.loss = 0
         
     def softmax(self, x):
-        return np.exp(x) / np.sum(np.exp(x), axis=1).reshape(-1, 1)
+        exp = np.exp(x - np.max(x, axis=1).reshape(-1, 1)) # numerical stability
+        return exp / np.sum(exp, axis=1).reshape(-1, 1)
         
     def forward(self, x, y):
         self.y_hat = self.softmax(x) # do a softmax to get predictions
