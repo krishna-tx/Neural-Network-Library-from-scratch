@@ -5,7 +5,7 @@ I created this project because I wanted to understand how neural networks work. 
 # Forward and Backward Propagation
 ![nn_forward_backward_prop](https://github.com/krishna-tx/Neural-Network-Library-from-scratch/assets/16388863/25405e5c-6134-43b4-aa48-f9e0d2caad07)
 
-On the left side of the above image, there is a diagram of an example neural network. This is the model that the math was written out for, but the same general ideas can be generalized to simpler or more advanced feed-forward neural networks. 
+On the left side of the above image, there is a diagram of an example neural network. This is the model that the math was written out for, but the same ideas can be generalized to simpler or more advanced feed-forward neural networks. 
 
 ## Forward Propagation
 Under the diagram is the implementation of the forward propagation. It shows the equations with the appropriate variables being used for each layer in the network, as well as the shapes (dimensions) of the output matrices. The $z$ matrix is the linear output (weighted sum) of the input and weights/biases. The $a$ matrix is the output of the nonlinearity of the $z$ matrix. The loss is finally calculated at the end of the forward propagation based on the labels ($y$) and the prediction, in this case: $a_3$. This particular example uses the Mean Squared Error Loss, but the same idea would be true for any Loss function depending on the model and use cases.
