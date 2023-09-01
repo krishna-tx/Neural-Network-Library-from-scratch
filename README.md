@@ -14,5 +14,19 @@ Shape of $W_3$: (2, 1) - (# of neurons in second hidden layer, # of neurons in o
 
 Shape of $b_3$: (1, 1) - numpy broadcasting will take care of first dimension
 
+$A_0 = X $
+
 ## Forward Propagation
-$ a_0 = X $
+$Z_1 = A_0 \cdot W_1 + b_1$ | Shape of $Z_1$: (n, 4)
+
+$A_1 = \sigma(Z_1)$ | Shape of $A_1$: (n, 4)
+
+$Z_2 = A_1 \cdot W_2 + b_2$ | Shape of $Z_2$: (n, 2)
+
+$A_2 = \sigma(Z_2)$ | Shape of $A_2$: (n, 2)
+
+$Z_3 = A_2 \cdot W_3 + b_3$ | Shape of $Z_3$: (n, 1)
+
+$A_3 = \sigma(Z_3)$ | Shape of $A_3$: (n, 1)
+
+## Backward Propagation
