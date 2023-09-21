@@ -12,7 +12,7 @@ class Linear:
         
     def forward(self, x):
         self.inputs = x
-        z = np.dot(x, self.weights) + self.biases
+        z = np.matmul(x, self.weights) + self.biases
         return z
     
     def backward(self, dz):
@@ -20,12 +20,12 @@ class Linear:
         dz_db = 1
         
         # Accumulate Gradients
-        self.dw += np.dot(dz_dw, dz) / self.inputs.shape[0]
+        self.dw += np.matmul(dz_dw, dz) / self.inputs.shape[0]
         self.db += np.sum(dz_db * dz, axis=0) / self.inputs.shape[0]
         
         # Compute da to be passed back to the previous layer
         dz_da = self.weights.T
-        da = np.dot(dz, dz_da)
+        da = np.matmul(dz, dz_da)
         return da
     
     def step(self, lr=1e-3, momentum=0):
