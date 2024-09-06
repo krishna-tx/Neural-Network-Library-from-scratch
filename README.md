@@ -1,4 +1,4 @@
-# Custom Neural Network Library from Scratch (PyTorch Clone)
+# Custom Neural Network Library from Scratch
 
 I created this project because I wanted to understand how neural networks work. I developed the mathematics behind feed-forward neural networks with multivariable calculus and some basic linear algebra and applied it through code using Python and NumPy (for computational uses). The jupyter notebook goes through simple linear regression, a 2 layer neural network for binary classification, and an n-layer neural network for multi-class classification. I have also copied the custom library classes from the notebook into the "Classes" folder so that it can be used similar to the nn library in PyTorch.
 
